@@ -1,33 +1,32 @@
 package structure.repositories;
 
 import org.springframework.stereotype.Repository;
-import structure.entities.StudentEntity;
+import structure.entities.Task.TaskEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository(value="repo")
-public class StudentRepositoryImpl implements StudentRepository{
-
-    private static final List<StudentEntity> data = new ArrayList<>();
+@Repository("taskRepo")
+public class TaskRepositoryImpl implements TaskRepository{
+    private static final List<TaskEntity> data = new ArrayList<>();
 
 
     @Override
-    public long save(StudentEntity studentEntity) {
-        data.add(studentEntity);
+    public long save(TaskEntity taskEntity) {
+        data.add(taskEntity);
         return 1;
     }
 
     @Override
-    public boolean update(StudentEntity studentEntity) {
+    public boolean update(TaskEntity taskEntity) {
         int indexObject = -1;
         for (int index = 0 ; index < data.size(); index++){
-            if(data.get(index).getId() == studentEntity.getId()){
+            if(data.get(index).getId() == taskEntity.getId()){
                 indexObject = index;
             }
         }
         if (indexObject != -1){
             data.remove(indexObject);
-            data.add(indexObject, studentEntity);
+            data.add(indexObject, taskEntity);
             return true;
         }
         return false;
@@ -49,12 +48,12 @@ public class StudentRepositoryImpl implements StudentRepository{
     }
 
     @Override
-    public List<StudentEntity> selectAll() {
+    public List<TaskEntity> selectAll() {
         return data;
     }
 
     @Override
-    public StudentEntity findById(long id) {
+    public TaskEntity findById(long id) {
         int indexObject = -1;
         for (int index = 0 ; index < data.size(); index++){
             if(data.get(index).getId() == id){

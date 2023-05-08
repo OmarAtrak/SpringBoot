@@ -1,6 +1,5 @@
 package structure.mappers;
 
-import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 import structure.dtos.AdresseDto;
 import structure.dtos.CourseDto;
@@ -52,8 +51,8 @@ public class StudentMapper {
     // convert courseDto to course
     public CourseEntity convertCourseDtoToCourse(CourseDto courseDto){
         CourseEntity course = new CourseEntity();
-        course.setId(course.getId());
-        course.setName(course.getName());
+        course.setId(courseDto.getId());
+        course.setName(courseDto.getName());
         return course;
     }
     // convert Courses to courseDto
@@ -84,7 +83,7 @@ public class StudentMapper {
     public List <StudentDto> convertEntitysToDtos(List<StudentEntity> entities){
         return entities.stream().map(entity -> convertStudentEntityToStudentDto(entity)).collect(Collectors.toList());
     }
-    public List <StudentEntity> convertDtoToEntity(List<StudentDto> dtos){
+    public List <StudentEntity> convertDtosToEntitys(List<StudentDto> dtos){
         return dtos.stream().map(dto -> convertStudentDtoToStudentEntity(dto)).collect(Collectors.toList());
     }
 }

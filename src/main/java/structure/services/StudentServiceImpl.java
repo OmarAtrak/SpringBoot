@@ -3,16 +3,12 @@ package structure.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import structure.dtos.StudentDto;
-import structure.dtos.StudentIdDto;
-import structure.entities.StudentEntity;
-import structure.entities.StudentID;
 import structure.mappers.StudentMapper;
-import structure.repositories.StudentRepository;
 import structure.repositories.StudentRepositoryImpl;
 
 import java.util.List;
 
-@Service("service")
+@Service("studentService")
 public class StudentServiceImpl implements StudentService{
 
     @Autowired
@@ -41,12 +37,11 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<StudentDto> selectAll() {
-        return studentMapper.convertEntitysToDtos(studentRepository.getData());
+        return studentMapper.convertEntitysToDtos(studentRepository.selectAll());
     }
 
     @Override
-    public StudentDto findById(StudentIdDto idDto) {
-//        return studentMapper.convertStudentEntityToStudentDto(studentRepository.getData().stream().filter(student -> student.getId()==studentMapper.convertStudentIdDtoToStudentId(idDto)));
-        return  new StudentDto();
+    public StudentDto findById(long id) {
+        return studentMapper.convertStudentEntityToStudentDto(studentRepository.findById(id));
     }
 }

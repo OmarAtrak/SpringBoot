@@ -3,7 +3,7 @@ package structure.dtos;
 public class AdresseDto {
     private String rue;
     private String avenue;
-    private String number;
+    private long number;
 
 
     public String getRue() {
@@ -20,10 +20,10 @@ public class AdresseDto {
         this.avenue = avenue;
     }
 
-    public String getNumber() {
+    public long getNumber() {
         return this.number;
     }
-    public void setNumber(String number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 
