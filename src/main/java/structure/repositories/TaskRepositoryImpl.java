@@ -8,10 +8,12 @@ import java.util.List;
 @Repository("taskRepo")
 public class TaskRepositoryImpl implements TaskRepository{
     private static final List<TaskEntity> data = new ArrayList<>();
+    public static long idTask = 0;
 
 
     @Override
     public long save(TaskEntity taskEntity) {
+        taskEntity.setId(++idTask);
         data.add(taskEntity);
         return 1;
     }

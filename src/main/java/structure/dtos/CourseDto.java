@@ -9,11 +9,11 @@ public class CourseDto {
         return this.id;
     }
     public void setId(long id) {
-        this.id = id;
+        this.id = id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
     public void setName(String name) {
         this.name = name;

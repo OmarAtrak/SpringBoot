@@ -1,5 +1,7 @@
 package structure.entities;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,11 +16,13 @@ public class StudentEntity {
         private long id;
 
     @Column(name = "student_name")
+    @NotNull
     private String name;
 
     @Embedded
     @Column(name = "adresse_student")
     private Adresse adresse;
+
 
     @ManyToMany
     private List<CourseEntity> courses;

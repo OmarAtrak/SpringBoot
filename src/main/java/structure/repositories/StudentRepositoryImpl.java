@@ -9,10 +9,12 @@ import java.util.List;
 public class StudentRepositoryImpl implements StudentRepository{
 
     private static final List<StudentEntity> data = new ArrayList<>();
+    public static long idStudent = 0;
 
 
     @Override
     public long save(StudentEntity studentEntity) {
+        studentEntity.setId(++idStudent);
         data.add(studentEntity);
         return 1;
     }

@@ -69,7 +69,8 @@ public class StudentMapper {
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setAdresse(convertAdresseToAdresseDto(entity.getAdresse()));
-        dto.setCourses(convertCoursesToCoursesDto(entity.getCourses()));
+        if(entity.getCourses() != null)
+            dto.setCourses(convertCoursesToCoursesDto(entity.getCourses()));
         return dto;
     }
     public StudentEntity convertStudentDtoToStudentEntity(StudentDto dto){
@@ -77,7 +78,8 @@ public class StudentMapper {
         entity.setId(dto.getId());
         entity.setName(dto.getName());
         entity.setAdresse(convertAdresseDtoToAdresse(dto.getAdresse()));
-        entity.setCourses(convertCoursesDtoToCourse(dto.getCourses()));
+        if(dto.getCourses() != null)
+            entity.setCourses(convertCoursesDtoToCourse(dto.getCourses()));
         return entity;
     }
     public List <StudentDto> convertEntitysToDtos(List<StudentEntity> entities){
