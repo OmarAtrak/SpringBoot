@@ -9,10 +9,8 @@ import java.util.List;
 @Table(name = "T_Student")
 public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)    // TABLE = HIBERNATE_SEQUENCE (GERRER LES ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_student")
-//    private StudentID studentId;
-//    private StudentID studentId;
         private long id;
 
     @Column(name = "student_name")

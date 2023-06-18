@@ -10,11 +10,13 @@ public class StudentRepositoryImpl implements StudentRepository{
 
     private static final List<StudentEntity> data = new ArrayList<>();
     public static long idStudent = 0;
+    public static long idCourse = 0;
 
 
     @Override
     public long save(StudentEntity studentEntity) {
         studentEntity.setId(++idStudent);
+        studentEntity.getCourses().forEach(courseEntity -> courseEntity.setId(++idCourse));
         data.add(studentEntity);
         return 1;
     }
@@ -29,6 +31,7 @@ public class StudentRepositoryImpl implements StudentRepository{
         }
         if (indexObject != -1){
             data.remove(indexObject);
+            studentEntity.getCourses().forEach(courseEntity -> courseEntity.setId(++idCourse));
             data.add(indexObject, studentEntity);
             return true;
         }
